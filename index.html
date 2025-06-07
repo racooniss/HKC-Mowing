@@ -7,7 +7,7 @@
     <title>HKC Mowing - Premium Lawn Care</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet>
     <style>
         :root {
             --primary: #2a7f3f;
@@ -64,7 +64,7 @@
         .logo {
             font-size: 2.5rem;
             font-weight: 700;
-            position: relative; 
+            position: relative;
             z-index: 2;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
@@ -450,6 +450,17 @@
             justify-self: center;
             padding: 1rem 3rem;
             margin-top: 1rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .submit-btn:hover {
+            background: var(--primary-dark);
         }
         
         /* Footer */
@@ -675,34 +686,43 @@
         
         <section id="contact" class="contact">
             <h2>Ready for a Better Lawn?</h2>
-            <form class="contact-form">
+            <form class="contact-form" action="https://docs.google.com/forms/d/e/1FAlpQLSfKLAHHt3czig7eddouGcV_WinPtlaS9kZMZQHkK-amPJIqA/formResponse" method="POST" target="_blank">
                 <div class="form-group">
-                    <label for="name">Your Name</label>
-                    <input type="text" id="name" required>
+                    <label for="name">Your Name*</label>
+                    <input type="text" id="name" name="entry.1859538605" required>
                 </div>
                 <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" required>
+                    <label for="email">Email Address*</label>
+                    <input type="email" id="email" name="entry.2058746974" required>
                 </div>
                 <div class="form-group">
                     <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone">
+                    <input type="tel" id="phone" name="entry.1577595097">
                 </div>
                 <div class="form-group">
-                    <label for="service">Service Needed</label>
-                    <select id="service">
-                        <option value="mowing">Lawn Mowing</option>
-                        <option value="weeds">Weed Removal</option>
-                        <option value="package">Total Lawn Package</option>
-                        <option value="other">Other Service</option>
+                    <label for="service">Service Needed*</label>
+                    <select id="service" name="entry.595442120" required>
+                        <option value="" disabled selected>Select a service</option>
+                        <option value="Lawn Mowing">Lawn Mowing</option>
+                        <option value="Weed Removal">Weed Removal</option>
+                        <option value="Full Package">Complete Lawn Package</option>
+                        <option value="Other">Other Service</option>
                     </select>
                 </div>
                 <div class="form-group full-width">
-                    <label for="message">Tell Us About Your Lawn</label>
-                    <textarea id="message" required></textarea>
+                    <label for="message">Tell Us About Your Lawn*</label>
+                    <textarea id="message" name="entry.238824433" required></textarea>
                 </div>
-                <button type="submit" class="btn submit-btn">Get Free Estimate</button>
+                <button type="submit" class="submit-btn">Get Free Estimate</button>
             </form>
+            <script>
+                document.querySelector('.contact-form').addEventListener('submit', function() {
+                    setTimeout(() => {
+                        alert('Thank you! Your estimate request has been submitted. We\'ll contact you within 24 hours.');
+                        this.reset();
+                    }, 500);
+                });
+            </script>
         </section>
     </div>
     
