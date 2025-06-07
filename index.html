@@ -686,7 +686,13 @@
         
        <section id="contact" class="contact">
     <h2>Ready for a Better Lawn?</h2>
-    <form class="contact-form" action="https://docs.google.com/forms/d/e/1FAIpQLSfKLAHHt3czlg7e4douGcV_WinPtlaS9kZMZQHkK-amPjJlqA/formResponse" method="POST" target="_blank">
+    
+    <!-- The Original Working Form (With All Required IDs) -->
+    <form id="lawnForm" class="contact-form" 
+          action="https://docs.google.com/forms/d/e/1FAIpQLSfKLAHHt3czlg7e4douGcV_WinPtlaS9kZMZQHkK-amPjJlqA/formResponse" 
+          method="POST" 
+          target="_blank">
+        
         <!-- Name Field -->
         <div class="form-group">
             <label for="name">Your Name*</label>
@@ -723,7 +729,7 @@
             <textarea id="message" name="entry.238824433" required></textarea>
         </div>
         
-        <!-- Hidden Fields -->
+        <!-- Hidden Fields Required by Google Forms -->
         <input type="hidden" name="draftResponse" value="[,,]">
         <input type="hidden" name="pageHistory" value="0">
         <input type="hidden" name="fbzx" value="-816543897790213000">
@@ -731,14 +737,16 @@
         <button type="submit" class="submit-btn">Get Free Estimate</button>
     </form>
     
-    <!-- Success Message Script -->
+    <!-- Mobile-Friendly Enhancement -->
     <script>
-        document.querySelector('.contact-form').addEventListener('submit', function(e) {
-            // Optional: Add form validation here if needed
-            setTimeout(() => {
-                alert('Thank you! Your estimate request has been submitted.');
-                this.reset();
-            }, 500);
+        document.getElementById('lawnForm').addEventListener('submit', function(e) {
+            // For mobile devices: Show immediate confirmation
+            if (/Mobi|Android/i.test(navigator.userAgent)) {
+                alert("Thank you! Your request has been submitted.\n\nNote: It may take 10-20 seconds to appear in our system.");
+                setTimeout(() => {
+                    this.reset();
+                }, 500);
+            }
         });
     </script>
 </section>
